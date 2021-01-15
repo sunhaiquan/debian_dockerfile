@@ -1,5 +1,6 @@
 
-下一代 Debian 正式发行版的代号为 "buster" — 发布时间尚未确定
+下一代 Debian 正式发行版的代号为 
+"buster" — 发布时间尚未确定
 Debian 9（"stretch"） — 当前的稳定版
 Debian 8（"jessie"） — 被淘汰的稳定版
 Debian 7（"wheezy"） — 被淘汰的稳定版
