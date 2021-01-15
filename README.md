@@ -13,13 +13,13 @@ Debian GNU/Linux 2.1（"slink"） — 被淘汰的稳定版
 Debian GNU/Linux 2.0（"hamm"） — 被淘汰的稳定版
 
 # 所需文件
-```python
+```
 ls ./
 Dockerfile          jdk1.8.0_231.tar.gz
 ```
 
 #构建镜像
-```python
+```
 docker build -t 212.18.35.20:8082/oracle_jdk8_debian:v1  .
 ```
 
