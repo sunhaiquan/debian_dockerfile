@@ -23,6 +23,9 @@ RUN apt-get update && apt-get install curl  -y
 # 删除安装包
 RUN rm -r /var/lib/apt/lists/*
 
+#创建日志目录，如果不创建该目录，log日志打印路径会出错
+VOLUME /opt/logs/
+
 # 运行指定的命令，设置东8时区
 ENV TZ=Asia/Shanghai
 #设置容器时间与宿主机时间同步
