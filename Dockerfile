@@ -44,6 +44,7 @@ VOLUME /opt/logs
 # 在构建镜像时，指定镜像的工作目录，之后的命令都是基于此工作目录，如果不存在，则会创建目录
 WORKDIR /opt/logs
 
+
 #构建镜像
 # docker build -t 212.18.35.20:8082/oracle_jdk8_debian:v1  .
 
