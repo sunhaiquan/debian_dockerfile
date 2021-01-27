@@ -1,5 +1,6 @@
 FROM debian:latest
 
+
 # 更新apt-get源 使用阿里的源
 
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
@@ -23,11 +24,9 @@ RUN apt-get update && apt-get install curl  -y
 # 删除安装包
 RUN rm -r /var/lib/apt/lists/*
 
-#创建日志目录，如果不创建该目录，log日志打印路径会出错
-VOLUME /opt/logs/
-
 # 运行指定的命令，设置东8时区
 ENV TZ=Asia/Shanghai
+
 #设置容器时间与宿主机时间同步
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 
@@ -39,7 +38,21 @@ ENV LANG=C.UTF-8
 ENV JAVA_HOME=/usr/local/jdk1.8.0_231
 ENV CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib
 ENV PATH=$JAVA_HOME/bin:$PATH
-CMD ["java","-version"]
+
+# 测试日志打印，分配卷/opt/logs
+VOLUME /opt/logs
+# 在构建镜像时，指定镜像的工作目录，之后的命令都是基于此工作目录，如果不存在，则会创建目录
+WORKDIR /opt/logs
 
 #构建镜像
-#docker build -t 212.18.35.20:8082/oracle_jdk8_debian:v1  .
+# docker build -t 212.18.35.20:8082/oracle_jdk8_debian:v1  .
+
+# 上传到私服(nexus)
+#登录镜像
+# docker login 212.18.35.20:8082
+
+#上传镜像到私服(nexus)
+#  docker push 212.18.35.20:8082/oracle_jdk8_debian:v1
+
+#拉取镜像
+#  docker pull 212.18.35.20:8082/oracle_jdk8_debian:v1
